@@ -32,4 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 ### IntelliJ ###
-.idea
+.idea/
+
