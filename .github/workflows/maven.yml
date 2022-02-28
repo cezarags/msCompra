@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifact
-          path: ./mscompra/target/app.war
+          path: /mscompra/target/app.war
   deploy:
     needs: build
     name: Deploy on AWS Elastic Beanstall
