@@ -60,8 +60,8 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
-          aws_access_key: ${{AWS_ACCESS_KEY_ID_MSCOMPRAS}}
-          aws_secret_key: ${{AWS_SECRET_ACCESS_KEY_MSCOMPRAS}}
+          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID_MSCOMPRAS}}
+          aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY_MSCOMPRAS}}
           use_existing_version_if_available: true
           wait_for_environment_recovery: 120
           application_name: mscompras
