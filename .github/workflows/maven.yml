@@ -1,7 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
-name: Java esteira CI with Maven
+name: Pipeline
 
 on:
   push:
@@ -10,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  tests:
+    name: Run Unit tests
     runs-on: ubuntu-latest
 
     steps:
@@ -20,36 +17,35 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
-        distribution: 'temurin'
+        distribution: 'adopt'
         cache: maven
     - name: Build with Maven
       run: mvn -B test --file ./mscompra/pom.xml
 
-  build:   
-    needs: pipe
-  - name: Build maven package
+  build:
+    needs: tests
+    name: Build maven package
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-    - name: Cache local Maven repository
-      uses: actions/cache@v2
-      with:
-        path: ˜/.m2
-        key: ${{ runner.os }}-maven-${{ hashFiles('./mscompra/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - name: Build package war
-      run: mvn -B package -DskipeTests --file ./mscompra/pom.xml
-    - name: Upload .war     
-      uses: action/upload-artifact@v2
-      with:
-        name: war
-        path: ./mscompra/target/app.war 
-
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: maven
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('./mscompra/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+      - name: Build package war
+        run: mvn -B package -DskipTests --file ./mscompra/pom.xml
+      - name: Upload .war
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: ./mscompra/target/app.war
+ 
