@@ -1,4 +1,4 @@
-package br.com.workercompras.model
+package br.com.worker.validator.model
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.math.BigDecimal
@@ -15,5 +15,8 @@ data class Order (
     val cpfClient: Long,
     val cep: String,
     val email: String,
-    var card: Card?
-)
+    val card: Card?
+
+
+
+    )

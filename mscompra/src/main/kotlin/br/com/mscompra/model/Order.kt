@@ -12,6 +12,7 @@ import javax.persistence.Table
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import kotlinx.serialization.Serializable
+import javax.persistence.OneToOne
 
 @Entity
 @Table(name = "tb_order")
@@ -34,6 +35,8 @@ data class Order (
     @NotBlank
     val cep: String,
     @NotBlank
-    val email: String
+    val email: String,
+    @OneToOne
+    val card: Card?
 
 )

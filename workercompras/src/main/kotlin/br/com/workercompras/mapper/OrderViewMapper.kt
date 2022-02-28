@@ -1,5 +1,6 @@
 package br.com.workercompras.mapper
 
+import br.com.workercompras.model.Card
 import br.com.workercompras.model.Order
 import java.math.BigDecimal
 import java.time.Instant.now
@@ -18,7 +19,11 @@ class OrderViewMapper: Mapper<String, Order> {
             datePurchase = Date("2021-05-10"),
             cep = "te",
             cpfClient = 1,
-            email = ""
+            email = "",
+           card = Card(
+               numberCard = "",
+               availableLimit = BigDecimal.ZERO
+            )
         )
     }
 }
