@@ -1,7 +1,6 @@
 package br.com.mscompra.model
 import java.math.BigDecimal
 import java.util.*
-import java.util.random.RandomGenerator
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
