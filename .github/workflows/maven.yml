@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifact
-          path: /mscompra/target/app.war
+          path: ./mscompra/target/mscompra-0.0.1-SNAPSHOT.war
   deploy:
     needs: build
     name: Deploy on AWS Elastic Beanstall
@@ -68,6 +68,6 @@ jobs:
           environment_name: Mscompras-env
           version_label: latest-${{github.sha}}
           region: us-east-1
-          deployment_package: app.war
+          deployment_package: mscompra-0.0.1-SNAPSHOT.war
         
  
