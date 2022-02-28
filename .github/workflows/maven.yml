@@ -27,7 +27,7 @@ jobs:
 
   build:   
     needs: pipe
-    name: Build maven package
+  - name: Build maven package
     runs-on: ubuntu-latest
 
     steps:
