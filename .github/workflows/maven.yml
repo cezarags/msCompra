@@ -47,5 +47,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifact
-          path: /target/app.war
+          path: ./mscompra/target/app.war
  
