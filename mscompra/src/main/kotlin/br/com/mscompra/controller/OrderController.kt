@@ -17,4 +17,9 @@ class OrderController(
         val orderSave = orderService.saveOrder(order)
         return ResponseEntity.ok(orderSave)
     }
+
+    override fun getString(): String {
+        return "Teste criado com sucesso! validação do Deploy feito na pipeline utilizando github Actions com deploy na aws com EB"
+    }
+
 }
